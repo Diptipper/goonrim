@@ -6,7 +6,7 @@ From here, I will assume you are installing Skyrim Anniversary Edition `v1.6.117
 
 For nexus mod, when I write `version xx`, look at the top-right corner for each file panel. There is a version number there. If you can't find the version I specified, try looking at the `Old files` section at the bottom of the page.
 
-I'm using vortex, but you can use any mod loader as long as you know how to sort the mods and use external tools like Nemesis, etc.
+I'm using vortex, but you can use any mod loader as long as you know how to sort the mods and use external tools like Nemesis, etc. If you are using Vortex like I do, I recommend downloading everything manually and import them into Vortex later.
 
 ## Essentials
 - Skyrim Anniversary Edition `v1.6.1170.0`
