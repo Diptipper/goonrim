@@ -25,3 +25,5 @@ I'm using vortex, but you can use any mod loader as long as you know how to sort
   - PapyrusUtilSE `version 4.6` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/13048?tab=files)
   - RaceMenu `version 0.4.19.16` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/19080?tab=files)
   - SkyUI `version 5.2SE` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/12604?tab=files)
+## Semi-Essentials
+- Alternate Start `version 4.2.5` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/272?tab=files)
