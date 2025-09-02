@@ -15,6 +15,7 @@ I'm using vortex, but you can use any mod loader as long as you know how to sort
 - Nemesis `version v0.84-beta` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/60033?tab=files)
 - Ostim Standalone [follow this carefully](https://www.nexusmods.com/skyrimspecialedition/articles/5654)
 - Schlong of Skyrim Lite `version 1.4` [⬇️](https://www.loverslab.com/files/file/3705-schlongs-of-skyrim-light-se/)
+- For Pandora, Make sure you zip the output and install the zip as a mod
 ## Semi-Essentials
 - Alternate Perspective `version 4.0.3` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/50307?tab=files)
 - Fus Ro D'oh `version 2.5` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/15109?tab=files&file_id=464222)
