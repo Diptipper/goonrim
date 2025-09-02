@@ -19,3 +19,7 @@ I'm using vortex, but you can use any mod loader as long as you know how to sort
 ## Semi-Essentials
 - Alternate Perspective `version 4.0.3` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/50307?tab=files)
 - Fus Ro D'oh `version 2.5` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/15109?tab=files&file_id=464222)
+## Body
+- BHUNP
+- BodySlide
+- CBPC
