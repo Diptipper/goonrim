@@ -8,11 +8,18 @@ For nexus mod, when I write `version xx`, look at the top-right corner for each 
 
 ## Essentials
 - Skyrim Anniversary Edition `v1.6.1170.0`
-- Skyrim Script Extender (SKSE) `build 2.2.6`
-- Unofficial Skyrim Special Edition Patch (USSEP)
+- Skyrim Script Extender (SKSE) `build 2.2.6` [⬇️](https://skse.silverlock.org/)
+- Unofficial Skyrim Special Edition Patch (USSEP) `version 4.3.6c` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/266?tab=files)
+- Nemesis `version v0.84-beta` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/60033?tab=files)
 
 - Ostim `version 5.4` + `5.7` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/40725?tab=files)
   - Address Library for SKSE Plugins `version 11` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/32444?tab=files)
   - ConsoleUtilSSE `version 1.4.0` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/24858?tab=files)
   - JContainers SE `version 4.2.9` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/16495?tab=files)
   - OSA `version 0011` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/17217?tab=files)
+    - Mfg Fix `version 1.6.1` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/11669?tab=files)
+    - XPMSSE `version 5.06` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/1988?tab=files)
+  - OSex `version 0003` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/17209?tab=files)
+  - PapyrusUtilSE `version 4.6` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/13048?tab=files)
+  - RaceMenu `version 0.4.19.16` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/19080?tab=files)
+  - SkyUI `version 5.2SE` [⬇️](https://www.nexusmods.com/skyrimspecialedition/mods/12604?tab=files)
