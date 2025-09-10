@@ -1,1 +1,312 @@
-Test
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goonrim—Modding guide</title>
+  <meta name="color-scheme" content="dark light">
+
+  <style>
+    /* ---- Dark theme tokens ---- */
+    :root {
+      --bg: #0b0e14;
+      --panel: #0f1320;
+      --text: #e6e6e6;
+      --muted: #a8b0bf;
+      --line: #1b2233;
+      --link: #7ab7ff;
+      --link-hover: #9ed0ff;
+      --shadow: 0 8px 24px rgba(0,0,0,.35);
+      --maxw: 1100px;
+      --rad: 12px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #ffffff;
+        --panel: #f7f8fb;
+        --text: #12161f;
+        --muted: #4b5565;
+        --line: #e6e8ef;
+        --link: #0a58ff;
+        --link-hover: #3a7bff;
+        --shadow: 0 8px 24px rgba(0,0,0,.08);
+      }
+    }
+
+    /* ---- Base ---- */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    html { scroll-behavior: smooth }
+    body{
+      margin:0;
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--link); text-decoration: none }
+    a:hover { color: var(--link-hover); text-decoration: underline }
+    img{max-width:100%; height:auto; display:block}
+    code,pre{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+
+    /* ---- Header ---- */
+    header{
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: saturate(140%) blur(6px);
+      background: color-mix(in oklab, var(--bg), transparent 30%);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: flex; align-items: center; gap: .75rem;
+      padding: .85rem 1rem;
+    }
+    .brand h1{
+      font-size: 1rem; font-weight: 700; letter-spacing: .3px; margin: 0;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: linear-gradient(180deg, #8cc2ff, #3a7bff);
+      box-shadow: 0 0 16px rgba(58,123,255,.45);
+    }
+
+    /* ---- Layout ---- */
+    .wrap{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1.25rem;
+      padding: 1rem;
+    }
+    @media (max-width: 900px){
+      .wrap{ grid-template-columns: 1fr }
+    }
+
+    /* ---- TOC ---- */
+    .toc{
+      position: sticky; top: 56px;
+      align-self: start;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--rad);
+      box-shadow: var(--shadow);
+      padding: .75rem .75rem;
+    }
+    .toc .title{
+      font-size: .9rem; font-weight: 700; letter-spacing: .02em;
+      color: var(--muted); margin: .25rem .25rem .5rem;
+    }
+    .toc nav ul{
+      list-style: none; padding: 0; margin: 0;
+    }
+    .toc a{
+      display: block;
+      padding: .35rem .5rem;
+      border-radius: 8px;
+      color: var(--text);
+    }
+    .toc a:hover{ background: color-mix(in oklab, var(--panel), white 3%) }
+    .toc .lvl-2{ padding-left: .5rem }
+    .toc .lvl-3{ padding-left: 1.25rem; font-size: .95em; color: var(--muted) }
+
+    /* ---- Article ---- */
+    article{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--rad);
+      box-shadow: var(--shadow);
+      padding: clamp(1rem, 3vw, 2rem);
+    }
+    article header{ margin-bottom: .8rem }
+    article h1{
+      font-weight: 800; margin: 0 0 .25rem;
+      font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+      line-height: 1.25;
+    }
+    .byline{ color: var(--muted); font-size: .95rem }
+    .prose{ max-width: 72ch }
+    .prose h2, .prose h3{ scroll-margin-top: 72px; }
+    .prose h2{
+      margin-top: 2rem; margin-bottom: .25rem; font-size: 1.25rem;
+      border-bottom: 1px solid var(--line); padding-bottom: .4rem;
+    }
+    .prose h3{ margin-top: 1.2rem; font-size: 1.05rem; color: var(--muted) }
+    .prose p{ margin: .85rem 0 }
+    .prose blockquote{
+      margin: 1rem 0; padding: .75rem .9rem; border-left: 3px solid var(--link);
+      background: color-mix(in oklab, var(--panel), white 1.5%);
+      border-radius: 8px;
+    }
+    .prose pre{
+      margin: 1rem 0; padding: .9rem 1rem; border-radius: 10px;
+      background: #0b0f1a; border: 1px solid var(--line); overflow:auto;
+    }
+
+    /* ---- Small utility ---- */
+    .visually-hidden{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand" role="banner">
+      <span class="dot" aria-hidden="true"></span>
+      <h1>Goonrim</h1>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Auto-generated Table of Contents -->
+    <aside class="toc" aria-label="Table of contents">
+      <div class="title">Contents</div>
+      <nav id="toc"><ul><li class="lvl-2"><a href="#intro">Introduction</a></li><li class="lvl-2"><a href="#a">Section A</a></li><li class="lvl-2"><a href="#b">Section B</a></li><li class="lvl-2"><a href="#c">Section C</a></li><li class="lvl-2"><a href="#faq">FAQ</a></li></ul></nav>
+      <!-- The list above is a safe fallback; it will be replaced by JS based on headings -->
+    </aside>
+
+    <!-- Article -->
+    <article aria-labelledby="title">
+      <header>
+        <h1 id="title">Adult Skyrim modding guide</h1>
+        <p class="byline">by Diptip</p>
+      </header>
+
+      <div class="prose" id="content">
+        <h2 id="intro">Preface</h2>
+        <p>
+        Skyrim is an old game. But despite its dated mechanics and buggy reputation, it has one of the most active fanbases amongst all single player games. I'd argue it's because of the modding scene, R18 or not.
+        <br><br>
+        When Skyrim was launched in 2011, Bethesda was kind enough to release the Creation Kit for modders to use. This lets us modders explore the inner working of the Creation Engine and create many incredible mods out of it. But versatility of the tool comes with its technicality. So YOU 🫵 also have to at least learn how it works at the bare minimum to avoid breaking the game. Yes, you can easily break the game if you don't know what you are doing. Luckily, I'm here for you!
+        <br><br>
+        I will assume that you have the latest version of <a href="https://store.steampowered.com/app/1746860/The_Elder_Scrolls_V_Skyrim_Anniversary_Upgrade/">Anniversary Edition on Steam</a>. The <a href="https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/">Special Edition</a> or the <a href="https://store.steampowered.com/app/611670/The_Elder_Scrolls_V_Skyrim_VR/">VR Edition</a> should work too, but you have to choose the correct version of the mods yourself. (The VR version is very tricky.)
+        <br><br>
+        Below, I will separate the contents into several parts based on the functionality of the mods. I'll try to make each part as self contained as possible. Feel free to skip to the part you are interested.  But I recommend that you DO NOT skip the first section (where I explain how modding works).
+        </p>
+
+        <h2 id="a">1. How modding works</h2>
+        <p>
+        Skyrim as a game is composed of two parts: the plugins and the assets. The <b>plugins</b> handle records of stuff inside the game (basically the blueprints). At runtime, the engine reads the plugins and pulls the <b>assets</b> associated with the record and realizes it as stuffs inside the game.
+        <br><br>
+        Both the plugins and the assets are stored inside the Data folder of your Skyrim directory. For clarity, when I say root folder, I'm talking about the folder that contains the game binary (SkyrimSE.exe). And when I say the data folder, I'm talking about literally the 'Data' folder inside the root directory.
+        <br><br>
+        Plugins are contained in files with the following extensions: .esm (Elder Scrolls Master), .esp (Elder Scrolls Plugin), .esl (Elder Scrolls Light). The rest of the stuff inside the Data folder are the assets.
+        <br><br>
+        Many mods require you to install external frameworks for extra functionalities. These are typically installed in the root folder. I'll mention about this more below.
+        </p>
+
+        <h3 id="a-1">1.1 Handling mod conflicts</h3>
+        <p>
+        When you install mods, both plugins and assets can have conflicts with other mods. It is your responsibility to manage these conflicts. Otherwise, the game will start to act weird, if not crash to desktop entirely.
+        <br><br>
+        <b>Plugin conflicts</b>
+        <br>
+        This is the easy one. If the conflict is just on the plugin level. You can manage the conflicts by adjusting the load order. Mods loaded after/below are prioritized over mods loaded before/above. You can adjust the load order before launching the game, but honestly, don't do that. I recommend using a proper mod manager such as <a href="https://www.nexusmods.com/skyrimspecialedition/mods/6194">Mod Organizer 2</a> or <a href="https://www.nexusmods.com/about/vortex">Vortex</a>. I am using Vortex, so the screenshots will be from Vortex. In these mod managers, there is an option to auto-sort the load order to minimize obvious dependency errors. But you have to decide the less-obvious conflicts by yourself again.
+
+        <br><br>
+        <b>Asset conflicts</b>
+        <br>
+        This one is tricky. To explain why, remember that we are talking about files here. When two mods use their own assets; e.g., skin textures, you cannot keep both of them and decide which one to use later. Once you overwrite the files, it's permanent. That's why using mod manager is so important since they handle these kind of things for you.
+        <br>
+
+        </p>
+
+        <h3 id="a-2">1.2 Good modding etiquette</h3>
+        <p>More detail here.</p>
+
+        <h2 id="b">2. Body replacer</h2>
+        <p>Another section with helpful text.</p>
+
+        <h3 id="b-1">2.1 Meshes and textures</h3>
+        <p>Notes, examples, or references.</p>
+
+        <h3 id="b-2">2.2 Skeletons</h3>
+        <p>Notes, examples, or references.</p>
+
+        <h3 id="b-3">2.3 Collisions</h3>
+        <p>Notes, examples, or references.</p>
+
+        <h2 id="c">3. NPC replacer</h2>
+        <p>Another section with helpful text.</p>
+
+        <h2 id="d">4. Animations</h2>
+        <p>Another section with helpful text.</p>
+
+        <h2 id="e">5. Sex implementation</h2>
+        <p>Another section with helpful text.</p>
+
+        <h2 id="f">6. Quest and Misc mods</h2>
+        <p>Another section with helpful text.</p>
+
+        <h2 id="g">7. Graphics</h2>
+        <p>Another section with helpful text.</p>
+
+        <h2 id="x">Section C</h2>
+        <blockquote>Tip: headings (`h2`, `h3`) are auto-indexed into the TOC.</blockquote>
+
+        <pre><code>// code sample
+        function hello(){ console.log("hello") }
+        </code></pre>
+
+        <h2 id="faq">FAQ</h2>
+        <p>Short questions and answers.</p>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    // Build a clean TOC from h2/h3 inside #content
+    (function () {
+      const container = document.getElementById('content');
+      const tocNav = document.getElementById('toc');
+      if (!container || !tocNav) return;
+
+      // Collect headings
+      const headings = [...container.querySelectorAll('h2, h3')];
+
+      // Ensure each heading has an id (slugify text if missing)
+      const slug = s => s.toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g,'')
+        .replace(/\s+/g,'-')
+        .replace(/-+/g,'-');
+
+      headings.forEach(h => {
+        if (!h.id) h.id = slug(h.textContent);
+        // Add anchor for copy-link convenience
+        if (!h.querySelector('a.anchor')) {
+          const a = document.createElement('a');
+          a.className = 'anchor';
+          a.href = '#' + h.id;
+          a.title = 'Link to this section';
+          a.setAttribute('aria-hidden','true');
+          a.style.marginLeft = '.25rem';
+          a.textContent = '¶';
+          a.style.opacity = '.4';
+          a.style.textDecoration = 'none';
+          a.addEventListener('mouseenter', () => a.style.opacity = '.8');
+          a.addEventListener('mouseleave', () => a.style.opacity = '.4');
+          h.appendChild(a);
+        }
+      });
+
+      // Build list
+      const ul = document.createElement('ul');
+      ul.style.listStyle = 'none'; ul.style.padding = '0'; ul.style.margin = '0';
+
+      headings.forEach(h => {
+        const li = document.createElement('li');
+        li.className = h.tagName === 'H2' ? 'lvl-2' : 'lvl-3';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent.replace('¶','').trim();
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      tocNav.innerHTML = '';
+      tocNav.appendChild(ul);
+    })();
+  </script>
+</body>
+</html>
